@@ -1,0 +1,8 @@
+Scene: test (4 spheres, 0 triangles, 4 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 16 | Depth: 10 | Mode: Path Tracing | Device: GPU | BVH: none
+
+=== Rendering ===
+[Render time] 25.105 ms
+Throughput: 305.92 Mrays/sec (primary rays only)
+Frames/sec: 39.83
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/none/test/gpu_none_test_pathtracing_800x600_spp16.ppm

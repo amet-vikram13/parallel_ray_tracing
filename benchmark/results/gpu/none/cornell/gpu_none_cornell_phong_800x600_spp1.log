@@ -1,0 +1,7 @@
+Scene: cornell (2 spheres, 12 triangles, 6 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 1 | Depth: 10 | Mode: Phong | Device: GPU | BVH: none
+
+=== Rendering ===
+[Render time] 3.501 ms
+Frames/sec: 285.66
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/none/cornell/gpu_none_cornell_phong_800x600_spp1.ppm

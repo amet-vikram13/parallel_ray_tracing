@@ -1,0 +1,16 @@
+Scene: cornell (2 spheres, 12 triangles, 6 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 64 | Depth: 10 | Mode: Path Tracing | Device: GPU | BVH: lbvh
+
+=== Building GPU LBVH (Morton codes + Karras algorithm) ===
+  Primitives: 14 | BVH Nodes: 27 | Root: 0
+  Morton code computation: 2.523 ms
+  Radix sort:              0.121 ms
+  Tree construction:       0.024 ms
+  AABB computation:        0.043 ms
+  Total build time:        2.711 ms
+
+=== Rendering ===
+[Render time] 25.501 ms
+Throughput: 1204.65 Mrays/sec (primary rays only)
+Frames/sec: 39.21
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/lbvh/cornell/gpu_lbvh_cornell_pathtracing_800x600_spp64.ppm

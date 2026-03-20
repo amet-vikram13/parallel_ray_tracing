@@ -1,0 +1,16 @@
+Scene: test (4 spheres, 0 triangles, 4 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 16 | Depth: 10 | Mode: Path Tracing | Device: CPU | BVH: lbvh
+
+=== Building GPU LBVH (Morton codes + Karras algorithm) ===
+  Primitives: 4 | BVH Nodes: 7 | Root: 0
+  Morton code computation: 2.445 ms
+  Radix sort:              0.162 ms
+  Tree construction:       0.027 ms
+  AABB computation:        0.048 ms
+  Total build time:        2.682 ms
+
+=== Rendering ===
+[Render time] 2254.608 ms
+Throughput: 3.41 Mrays/sec (primary rays only)
+Frames/sec: 0.44
+Output written to: /content/final_project/benchmark/results/20260319_170757/cpu/lbvh/test/cpu_lbvh_test_pathtracing_800x600_spp16.ppm

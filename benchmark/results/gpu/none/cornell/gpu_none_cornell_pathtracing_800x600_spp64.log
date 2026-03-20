@@ -1,0 +1,8 @@
+Scene: cornell (2 spheres, 12 triangles, 6 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 64 | Depth: 10 | Mode: Path Tracing | Device: GPU | BVH: none
+
+=== Rendering ===
+[Render time] 91.862 ms
+Throughput: 334.42 Mrays/sec (primary rays only)
+Frames/sec: 10.89
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/none/cornell/gpu_none_cornell_pathtracing_800x600_spp64.ppm

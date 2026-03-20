@@ -1,0 +1,15 @@
+Scene: test (4 spheres, 0 triangles, 4 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 1 | Depth: 10 | Mode: Phong | Device: GPU | BVH: lbvh
+
+=== Building GPU LBVH (Morton codes + Karras algorithm) ===
+  Primitives: 4 | BVH Nodes: 7 | Root: 0
+  Morton code computation: 2.417 ms
+  Radix sort:              0.125 ms
+  Tree construction:       0.025 ms
+  AABB computation:        0.039 ms
+  Total build time:        2.606 ms
+
+=== Rendering ===
+[Render time] 0.278 ms
+Frames/sec: 3599.57
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/lbvh/test/gpu_lbvh_test_phong_800x600_spp1.ppm
