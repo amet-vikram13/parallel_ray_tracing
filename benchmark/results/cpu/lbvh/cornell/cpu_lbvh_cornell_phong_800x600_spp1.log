@@ -1,0 +1,15 @@
+Scene: cornell (2 spheres, 12 triangles, 6 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 1 | Depth: 10 | Mode: Phong | Device: CPU | BVH: lbvh
+
+=== Building GPU LBVH (Morton codes + Karras algorithm) ===
+  Primitives: 14 | BVH Nodes: 27 | Root: 0
+  Morton code computation: 3.128 ms
+  Radix sort:              0.154 ms
+  Tree construction:       0.031 ms
+  AABB computation:        0.057 ms
+  Total build time:        3.371 ms
+
+=== Rendering ===
+[Render time] 99.224 ms
+Frames/sec: 10.08
+Output written to: /content/final_project/benchmark/results/20260319_170757/cpu/lbvh/cornell/cpu_lbvh_cornell_phong_800x600_spp1.ppm

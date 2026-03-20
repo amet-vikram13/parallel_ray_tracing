@@ -1,0 +1,12 @@
+Scene: test (4 spheres, 0 triangles, 4 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 16 | Depth: 10 | Mode: Path Tracing | Device: CPU | BVH: sah
+
+=== Building CPU SAH-BVH ===
+  Primitives: 4 | BVH Nodes: 7 | Root: 0
+  Build time: 0.004 ms
+
+=== Rendering ===
+[Render time] 2156.719 ms
+Throughput: 3.56 Mrays/sec (primary rays only)
+Frames/sec: 0.46
+Output written to: /content/final_project/benchmark/results/20260319_170757/cpu/sah/test/cpu_sah_test_pathtracing_800x600_spp16.ppm

@@ -1,0 +1,12 @@
+Scene: cornell (2 spheres, 12 triangles, 6 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 4 | Depth: 10 | Mode: Path Tracing | Device: GPU | BVH: sah
+
+=== Building CPU SAH-BVH ===
+  Primitives: 14 | BVH Nodes: 27 | Root: 0
+  Build time: 0.015 ms
+
+=== Rendering ===
+[Render time] 11.718 ms
+Throughput: 163.85 Mrays/sec (primary rays only)
+Frames/sec: 85.34
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/sah/cornell/gpu_sah_cornell_pathtracing_800x600_spp4.ppm

@@ -1,0 +1,7 @@
+Scene: test (4 spheres, 0 triangles, 4 materials, 1 lights)
+Resolution: 800 x 600 | SPP: 1 | Depth: 10 | Mode: Phong | Device: GPU | BVH: none
+
+=== Rendering ===
+[Render time] 2.532 ms
+Frames/sec: 394.88
+Output written to: /content/final_project/benchmark/results/20260319_170757/gpu/none/test/gpu_none_test_phong_800x600_spp1.ppm
