@@ -17,6 +17,11 @@ public:
     void render_pathtraced(const Scene& scene, const Camera& cam,
                            Image& output, const RenderConfig& config);
 
+    // Fragment-shader-style render path. Uses scene.shade_pixel per pixel
+    // and bypasses geometry intersection. Used by the `ocean` scene.
+    void render_shader(const Scene& scene, const Camera& cam,
+                       Image& output, const RenderConfig& config, float t);
+
     // Phase 3: Set BVH for accelerated traversal
     void set_bvh(const std::vector<BVHNode>& nodes,
                  const std::vector<PrimitiveRef>& prim_refs, int root);

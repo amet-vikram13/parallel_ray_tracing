@@ -4,6 +4,7 @@
 #include "geometry/ray.h"
 #include "geometry/hit_record.h"
 #include "geometry/aabb.h"
+#include "scenes/ocean_shader.h"
 
 // Initialize RNG for each pixel thread
 __global__ void init_rng_kernel(curandState* states, int width, int height, unsigned long long seed) {
@@ -353,6 +354,41 @@ void GPURenderer::render_phong(const Camera& cam, float* d_output,
 
     phong_kernel<<<grid, block>>>(d_scene, d_bvh, bvh_uploaded,
                                    cam, d_output, config.width, config.height);
+    CUDA_SYNC_CHECK();
+}
+
+// --- Fragment-shader kernel for the ocean scene ---
+__global__ void ocean_shader_kernel(Camera cam, float time, float* output,
+                                    int width, int height, int spp) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    if (x >= width || y >= height) return;
+
+    Vec3 color(0.0f);
+    int s_count = spp > 0 ? spp : 1;
+    for (int s = 0; s < s_count; ++s) {
+        float u_off = (s_count > 1) ? (float(s) + 0.5f) / float(s_count) : 0.5f;
+        float v_off = 0.5f;
+        Ray ray = cam.generate_ray(x, y, u_off, v_off);
+        color += shade_ocean_pixel(ray, time);
+    }
+    color /= float(s_count);
+
+    int idx = (y * width + x) * 3;
+    output[idx + 0] = color.x;
+    output[idx + 1] = color.y;
+    output[idx + 2] = color.z;
+}
+
+void GPURenderer::render_shader_ocean(const Camera& cam, float time, float* d_output,
+                                      const RenderConfig& config) {
+    dim3 block(16, 16);
+    dim3 grid((config.width + block.x - 1) / block.x,
+              (config.height + block.y - 1) / block.y);
+
+    ocean_shader_kernel<<<grid, block>>>(cam, time, d_output,
+                                         config.width, config.height,
+                                         config.samples_per_pixel);
     CUDA_SYNC_CHECK();
 }
 

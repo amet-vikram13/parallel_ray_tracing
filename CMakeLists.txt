@@ -32,6 +32,10 @@ set(SOURCES
     src/renderer/stream_compaction.cu
     src/geometry/sah_bvh.cpp
     src/geometry/lbvh.cu
+    src/scenes/scene_registry.cpp
+    src/scenes/scene_cornell_box.cpp
+    src/scenes/scene_spheres.cpp
+    src/scenes/scene_ocean.cpp
     src/utils/image.cpp
     src/utils/timer.cpp
 )

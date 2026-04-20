@@ -24,6 +24,11 @@ public:
     // Phase 2: Path tracing on GPU
     void render_pathtraced(const Camera& cam, float* d_output, const RenderConfig& config);
 
+    // Fragment-shader render path (ocean). Dispatches a per-pixel shader
+    // kernel; does not read scene geometry or BVH buffers.
+    void render_shader_ocean(const Camera& cam, float time, float* d_output,
+                             const RenderConfig& config);
+
     // Download framebuffer from GPU
     void download_framebuffer(float* d_output, Vec3* h_pixels, int num_pixels);
 

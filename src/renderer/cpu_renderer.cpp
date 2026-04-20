@@ -283,3 +283,30 @@ void CPURenderer::render_pathtraced(const Scene& scene, const Camera& cam,
         }
     }
 }
+
+// Fragment-shader-style render. Skips geometry traversal entirely and
+// invokes scene.shade_pixel per primary ray. Multiple spp are used as
+// simple sub-pixel jitter for anti-aliasing.
+void CPURenderer::render_shader(const Scene& scene, const Camera& cam,
+                                Image& output, const RenderConfig& config, float t) {
+    if (scene.shade_pixel == nullptr) {
+        output.clear(Vec3(0.0f));
+        return;
+    }
+    const int spp = std::max(1, config.samples_per_pixel);
+
+    #pragma omp parallel for schedule(dynamic, 16) collapse(2)
+    for (int y = 0; y < config.height; ++y) {
+        for (int x = 0; x < config.width; ++x) {
+            Vec3 color(0.0f);
+            for (int s = 0; s < spp; ++s) {
+                float u_off = (spp > 1) ? (float(s) + 0.5f) / float(spp) : 0.5f;
+                float v_off = 0.5f;
+                Ray ray = cam.generate_ray(x, y, u_off, v_off);
+                color += scene.shade_pixel(ray, t);
+            }
+            color /= static_cast<float>(spp);
+            output.set_pixel(x, y, color);
+        }
+    }
+}
